@@ -1,0 +1,18 @@
+{
+  "name": "csv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/build.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "d3": "^7.8.5",
+    "fs-jetpack": "^5.1.0",
+    "papaparse": "^5.4.1",
+    "standard": "^17.1.0"
+  }
+}
