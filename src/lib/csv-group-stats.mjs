@@ -5,7 +5,7 @@ import dataPaths from '../data/data-paths.mjs'
 const skillsMappingsParsed = parseCSV(dataPaths.mappings)
 const skillMappingsData = groupByColumns(skillsMappingsParsed)
 
-export function groupDesignerSkills (designer) {
+export function groupDesignerStats (designer) {
   const groupedData = {
     'Hard Skills': {},
     'Soft Skills': {},
@@ -32,4 +32,4 @@ export function groupDesignerSkills (designer) {
   return groupedData
 }
 
-export default groupDesignerSkills
+export default groupDesignerStats

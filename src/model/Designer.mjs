@@ -1,11 +1,11 @@
-import groupDesignerSkills from '../lib/csv-group-skills.mjs'
+import groupDesignerStats from '../lib/csv-group-stats.mjs'
 import Chart from './Chart.mjs'
 
 export class Designer {
   static all = new Set()
   id
-  skills
-  charts = new Set()
+  stats
+  charts = []
 
   constructor (params) {
     this.id = params.id || params.ID
@@ -13,22 +13,29 @@ export class Designer {
   }
 
   #groupDesignSkills (params) {
-    const groupedSkills = groupDesignerSkills(params)
-    this.skills = groupedSkills
+    const groupedSkills = groupDesignerStats(params)
+    this.stats = groupedSkills
     this.#buildAllCharts()
   }
 
-  #buildAllCharts () {
-    this.charts.add(
-      this.#buildChart('Hard Skills', this.id),
-      this.#buildChart('Soft Skills', this.id),
-      this.#buildChart('Capabilities', this.id)
-    )
+  #buildChart (key) {
+    const chart = new Chart({
+      key,
+      stats: this.stats[key],
+      id: this.id
+    })
+    return chart
   }
 
-  #buildChart (skillGroup, id) {
-    const chart = new Chart({ skillGroup, id })
-    return chart
+  #saveChart (chart) {
+    this.charts.push(chart)
+  }
+
+  #buildAllCharts () {
+    const harsSkillsChart = this.#buildChart('Hard Skills')
+    this.#saveChart(harsSkillsChart)
+    // this.charts.add(this.#buildChart('Soft Skills', this.id))
+    // this.charts.add(this.#buildChart('Capabilities', this.id))
   }
 
   static findByID (id) {
@@ -37,9 +44,10 @@ export class Designer {
     }
   }
 
-  getHardSkills () { return this.skills['Hard Skills'] }
-  getSoftSkills () { return this.skills['Soft Skills'] }
-  getCapabilities () { return this.skills.Capabilities }
+  getStats (type) {
+    return this.stats[type]
+  }
+
   save () { Designer.all.add(this) }
 }
 

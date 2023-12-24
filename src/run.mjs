@@ -1,5 +1,5 @@
 import buildDataModel from './model/build.mjs'
 import rawData from './lib/csv-map-data.mjs'
 
-const data = buildDataModel(rawData)
-console.log(data)
+const { Designer } = buildDataModel(rawData)
+console.log(Designer.findByID(1).charts[0].svg)
