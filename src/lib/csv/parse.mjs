@@ -1,6 +1,6 @@
 import Papa from 'papaparse'
 import jetpack from 'fs-jetpack'
-import groupByColumns from './csv-group-by-columns.mjs'
+import groupByColumns from './group-by-columns.mjs'
 
 export function parseCSV (pathToFile, options = {}) {
   const dataString = jetpack.read(pathToFile)

@@ -1,4 +1,4 @@
-import groupDesignerStats from '../lib/csv-group-stats.mjs'
+import groupDesignerStats from '../lib/csv/group-stats.mjs'
 import Chart from './Chart.mjs'
 
 export class Designer {

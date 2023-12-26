@@ -1,5 +1,5 @@
-import dataPaths from '../data/data-paths.mjs'
-import parseCSV from '../lib/csv-parse.mjs'
+import dataPaths from '../../data/data-paths.mjs'
+import parseCSV from './parse.mjs'
 
 export function organiseRawData () {
   const designerData = parseCSV(dataPaths.designers)
