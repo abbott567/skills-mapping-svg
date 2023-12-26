@@ -20,14 +20,14 @@ export class Chart {
     this.title = params.key
     this.key = camelcase(params.key)
     this.stats = params.stats
-    this.labels = Object.keys(params.stats)
-    this.inputData = Object.values(params.stats)
+    this.labels = params.labels || Object.keys(params.stats)
+    this.inputData = params.inputData || Object.values(params.stats)
     this.slices = buildChartSlices(this.inputData)
     this.svg = buildSVG(
       this.id,
       this.slices,
       this.labels,
-      false
+      params.team
     )
   }
 }

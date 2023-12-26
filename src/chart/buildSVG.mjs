@@ -13,7 +13,7 @@ const {
   radius
 } = config
 
-export function buildSVG (id, slices, labels, teamChart = false) {
+export function buildSVG (id, slices, labels, team = false) {
   const dom = new JSDOM('<!DOCTYPE html><body></body>')
   const body = d3.select(dom.window.document.querySelector('body'))
   // Create SVG element
@@ -28,8 +28,8 @@ export function buildSVG (id, slices, labels, teamChart = false) {
     .append('path')
     .attr('transform', `translate(${radius},${radius})`)
     .attr('d', (d) => {
-      if (teamChart) {
-        return arc.makePath(d.level, d.slice, slices.length)
+      if (team) {
+        return arc.makePath(d.level, d.slice, slices.length / 10)
       } else {
         return arc.makePath(d.level, d.slice, labels.length)
       }

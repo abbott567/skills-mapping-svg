@@ -1,6 +1,7 @@
 import Designer from './Designer.mjs'
 import Skill from './Skill.mjs'
 import Capability from './Capability.mjs'
+import Team from './Team.mjs'
 
 export function buildDataModel (rawData) {
   for (const entry of rawData.designerData) {
@@ -30,12 +31,16 @@ export function buildDataModel (rawData) {
     const capability = new Capability(params)
     capability.save()
   }
-  return {
+
+  const data = {
+    Team,
     Designer,
     Skill,
     Capability,
     rawData
   }
+  data.team = new Team(data)
+  return data
 }
 
 export default buildDataModel
