@@ -27,7 +27,13 @@ export function buildSVG (id, slices, labels, teamChart = false) {
     .enter()
     .append('path')
     .attr('transform', `translate(${radius},${radius})`)
-    .attr('d', (d) => arc.makePath(d.level, d.slice, labels.length))
+    .attr('d', (d) => {
+      if (teamChart) {
+        return arc.makePath(d.level, d.slice, slices.length)
+      } else {
+        return arc.makePath(d.level, d.slice, labels.length)
+      }
+    })
     .attr('fill', (d) => formatColours(colours.levels[d.level], d.active))
     .attr('class', 'slice')
   renderLabels(svg, labels)

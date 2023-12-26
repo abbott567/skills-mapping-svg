@@ -22,7 +22,7 @@ export class Chart {
       this.id,
       this.slices,
       this.labels,
-      true
+      false
     )
   }
 }
