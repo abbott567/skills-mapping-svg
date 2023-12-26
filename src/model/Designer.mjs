@@ -32,10 +32,12 @@ export class Designer {
   }
 
   #buildAllCharts () {
-    const harsSkillsChart = this.#buildChart('Hard Skills')
-    this.#saveChart(harsSkillsChart)
-    // this.charts.add(this.#buildChart('Soft Skills', this.id))
-    // this.charts.add(this.#buildChart('Capabilities', this.id))
+    const hardSkillsChart = this.#buildChart('Hard Skills')
+    this.#saveChart(hardSkillsChart)
+    const softSkillsChart = this.#buildChart('Soft Skills')
+    this.#saveChart(softSkillsChart)
+    const capabilitiesChart = this.#buildChart('Capabilities')
+    this.#saveChart(capabilitiesChart)
   }
 
   static findByID (id) {
