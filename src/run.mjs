@@ -1,5 +1,6 @@
 import buildDataModel from './model/build.mjs'
 import rawData from './lib/csv/map-data.mjs'
+import buildHTML from './lib/build-html.mjs'
 
-const { Designer } = buildDataModel(rawData)
-// console.log(Designer.findByID(1).charts)
+const data = buildDataModel(rawData)
+buildHTML(data)

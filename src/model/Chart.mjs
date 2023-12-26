@@ -1,8 +1,11 @@
 import buildChartSlices from '../chart/build-chart-slices.mjs'
 import buildSVG from '../chart/buildSVG.mjs'
+import camelcase from 'camelcase'
 
 export class Chart {
   id
+  title
+  key
   stats
   inputData
   labels
@@ -14,6 +17,8 @@ export class Chart {
     else if (params.key === 'Soft Skills') this.id = `${params.id}-chart-soft-skills`
     else if (params.key === 'Capabilities') this.id = `${params.id}-chart-capabilities`
     else throw Error(`params.key not valid when constructing charts: '${params.key}'`)
+    this.title = params.key
+    this.key = camelcase(params.key)
     this.stats = params.stats
     this.labels = Object.keys(params.stats)
     this.inputData = Object.values(params.stats)

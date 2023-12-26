@@ -5,7 +5,7 @@ export class Designer {
   static all = new Set()
   id
   stats
-  charts = []
+  charts = {}
 
   constructor (params) {
     this.id = params.id || params.ID
@@ -28,7 +28,7 @@ export class Designer {
   }
 
   #saveChart (chart) {
-    this.charts.push(chart)
+    this.charts[chart.key] = chart
   }
 
   #buildAllCharts () {

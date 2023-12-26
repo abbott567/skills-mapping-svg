@@ -1,0 +1,24 @@
+{%- extends 'layouts/base.njk' -%}
+
+{%- block sidebar -%}
+
+{%- endblock -%}
+
+{%- block main -%}
+<h1>Skills and capabilities assessment</h1>
+
+<hr>
+
+{%- for designer in Designer.all -%}
+  <h2>
+    Designer: {{designer.id}}
+  </h2>
+  {%- for key, value in designer.charts -%}
+    <h3>
+      {{value.title}}
+    </h3>
+    {{value.svg|safe}}
+  {%- endfor -%}
+{%- endfor -%}
+
+{%- endblock -%}
