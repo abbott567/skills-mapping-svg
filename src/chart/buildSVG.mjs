@@ -6,6 +6,7 @@ import colours from './colours.mjs'
 import renderLabels from './render-labels.mjs'
 import renderOutlines from './render-outlines.mjs'
 import { JSDOM } from 'jsdom'
+import { optimize } from 'svgo'
 
 const {
   width,
@@ -38,7 +39,9 @@ export function buildSVG (id, slices, labels, team = false) {
     .attr('class', 'slice')
   renderLabels(svg, labels)
   renderOutlines(svg, labels)
-  return body.node().innerHTML
+  const svgHTML = body.node().innerHTML
+  const optimisedResult = optimize(svgHTML, { multipass: true })
+  return optimisedResult.data
 }
 
 export default buildSVG

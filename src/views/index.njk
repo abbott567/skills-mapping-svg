@@ -9,23 +9,25 @@
 
 <hr>
 
-{%- for key, value in team.charts -%}
-  <h3>
-    {{value.title}}
-  </h3>
-  {{value.svg|safe}}
-{%- endfor -%}
-
-{%- for designer in Designer.all -%}
-  <h2>
-    Designer: {{designer.id}}
-  </h2>
-  {%- for key, value in designer.charts -%}
+<section></section>
+  {%- for key, value in team.charts -%}
     <h3>
       {{value.title}}
     </h3>
     {{value.svg|safe}}
   {%- endfor -%}
-{%- endfor -%}
+
+  {%- for designer in Designer.all -%}
+    <h2>
+      Designer: {{designer.id}}
+    </h2>
+    {%- for key, value in designer.charts -%}
+      <h3>
+        {{value.title}}
+      </h3>
+      {{value.svg|safe}}
+    {%- endfor -%}
+  {%- endfor -%}
+</section>
 
 {%- endblock -%}
