@@ -9,6 +9,7 @@
     <meta name="description" content="{{meta.description}}">
 
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='90'%3E📈%3C/text%3E%3C/svg%3E">
+    <style>{{css}}</style>
     {%- block headEnd -%}{%- endblock -%}
   </head>
   <body>
@@ -31,5 +32,53 @@
       </div>
       {%- block afterMain -%}{%- endblock -%}
     </div>
+
+    <footer>
+      <p>
+        Copyright stuff
+      </p>
+    </footer>
+
+    <script>
+      let isProcessingFocus = false
+      function bringSliceGroupToFront (event) {
+        if (isProcessingFocus) return
+        isProcessingFocus = true
+        var child = event.target
+        var parent = child.parentNode;
+        child.blur()
+        parent.appendChild(child);
+        child.focus()
+        isProcessingFocus = false
+      }
+      function overrideTabOrder() {
+        let tabIndex = 1;
+        const selectors = [
+          'a[href]:not([tabindex="-1"])',
+          'button:not([disabled]):not([tabindex="-1"])',
+          'input:not([type="hidden"]):not([disabled]):not([tabindex="-1"])',
+          'select:not([disabled]):not([tabindex="-1"])',
+          'textarea:not([disabled]):not([tabindex="-1"])',
+          '[tabindex]:not([tabindex="-1"])',
+          '[contenteditable="true"]:not([tabindex="-1"])',
+        ];
+
+        const elements = document.querySelectorAll(selectors.join(','));
+        elements.forEach(function (element) {
+          element.tabIndex = tabIndex++;
+        });
+      }
+      function addEventListeners () {
+        var sliceGroups = document.querySelectorAll('.slice');
+        sliceGroups.forEach(function (group) {
+          group.addEventListener('focus', bringSliceGroupToFront);
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        overrideTabOrder()
+        addEventListeners()
+      });
+    </script>
   </body>
 </html>

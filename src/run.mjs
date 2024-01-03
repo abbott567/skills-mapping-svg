@@ -1,8 +1,14 @@
 import buildDataModel from './model/build.mjs'
 import rawData from './lib/csv/map-data.mjs'
 import buildHTML from './lib/build-html.mjs'
-import convertAllSVGs from './lib/export-charts.mjs'
+import exportCharts from './lib/export-charts.mjs'
+import compileSass from './lib/compile-sass.mjs'
 
-const data = buildDataModel(rawData)
-buildHTML(data)
-convertAllSVGs(data)
+async function run () {
+  const data = await buildDataModel(rawData)
+  data.css = await compileSass()
+  await buildHTML(data)
+  await exportCharts(data)
+}
+
+run()

@@ -1,0 +1,34 @@
+// Reset
+@use 'reset/reset';
+
+// Global styles
+@use 'global/scale';
+@use 'global/base';
+@use 'global/typography';
+
+// Components
+@use 'components/all.scss';
+
+// Theme styles
+@use 'theme/colours';
+
+
+.slice {
+  &__score {
+    // opacity: 0;
+  }
+  &__score-text {
+    font-weight: 500;
+  }
+  &:focus {
+    .slice__level {
+      fill: var(--accentBackground);
+    }
+    .slice__level--active {
+      fill: var(--text);
+    }
+    .slice__score {
+      opacity: 1;
+    }
+  }
+}

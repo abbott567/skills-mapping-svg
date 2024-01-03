@@ -25,6 +25,21 @@ function getEndAngle (i, totalSlices) {
   return ((i + 1) / totalSlices) * 2 * Math.PI
 }
 
+function calculateCentroid (level, slice, totalSlices) {
+  const startAngle = getStartAngle(slice, totalSlices)
+  const endAngle = getEndAngle(slice, totalSlices)
+  const midAngle = (startAngle + endAngle) / 2
+
+  const startRadius = level * ringWidth + innerRadiusBuffer
+  const endRadius = startRadius + ringWidth
+  const midRadius = (startRadius + endRadius) / 2
+
+  return [
+    midRadius * Math.cos(midAngle - Math.PI / 2), // Adjusted by -90 degrees to align with standard coordinate system
+    midRadius * Math.sin(midAngle - Math.PI / 2)
+  ]
+}
+
 const halfWidth = getWidth() / 2
 const innerRadiusBuffer = 0
 const ringWidth = (halfWidth - innerRadiusBuffer) / (zoom + 1)
@@ -49,5 +64,6 @@ export default {
   getStartAngle,
   getEndAngle,
   getWidth,
-  makePath
+  makePath,
+  calculateCentroid
 }

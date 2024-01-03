@@ -5,29 +5,47 @@
 {%- endblock -%}
 
 {%- block main -%}
-<h1>Skills and capabilities assessment</h1>
+  <h1>Skills and capabilities assessment</h1>
 
-<hr>
+  <hr>
 
-<section></section>
-  {%- for key, value in team.charts -%}
-    <h3>
-      {{value.title}}
-    </h3>
-    {{value.svg|safe}}
-  {%- endfor -%}
+  <div class="chart-container" id="all">
+    <h2>
+      Team
+    </h2>
+    <div class="charts">
+      {%- for key, value in team.charts -%}
+        <div>
+          <h3 class="chart-header">
+            {{value.title}}
+          </h3>
+          {{value.svg|safe}}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <hr>
+
 
   {%- for designer in Designer.all -%}
-    <h2>
-      Designer: {{designer.id}}
-    </h2>
-    {%- for key, value in designer.charts -%}
-      <h3>
-        {{value.title}}
-      </h3>
-      {{value.svg|safe}}
-    {%- endfor -%}
+    <div class="chart-container" id="designer-{{designer.id}}">
+      <h2>
+        Designer: {{designer.id}}
+      </h2>
+      <div class="charts">
+        {%- for key, value in designer.charts -%}
+          <div>
+            <h3 class="chart-header">
+              {{value.title}}
+            </h3>
+            {{value.svg|safe}}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <hr>
   {%- endfor -%}
-</section>
 
 {%- endblock -%}
