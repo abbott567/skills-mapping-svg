@@ -1,7 +1,7 @@
-import Designer from './Designer.mjs'
-import Skill from './Skill.mjs'
-import Capability from './Capability.mjs'
-import Team from './Team.mjs'
+import Designer from './Designer/constructor.mjs'
+import Skill from './Skill/constructor.mjs'
+import Capability from './Capability/constructor.mjs'
+import Team from './Team/constructor.mjs'
 
 export function buildDataModel (rawData) {
   for (const entry of rawData.designerData) {

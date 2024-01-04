@@ -1,4 +1,4 @@
-import config from '../config.mjs'
+import config from '../../../config/chart.mjs'
 import createIdsForSlices from '../create/ids-for-slices.mjs'
 
 const { radius } = config

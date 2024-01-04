@@ -1,7 +1,7 @@
 import camelCase from 'camelcase'
 import slugify from 'slugify'
-import Skill from './Skill.mjs'
-import data from '../lib/csv/map-data.mjs'
+import Skill from '../Skill/constructor.mjs'
+import data from '../../lib/csv/map-data.mjs'
 
 // const mappingsData = parseCSV(dataPaths.mappings, { columns: true })
 

@@ -1,6 +1,6 @@
-import buildDataSets from '../chart/build/datasets.mjs'
+import buildDataSets from './build-datasets.mjs'
 import camelcase from 'camelcase'
-import buildCompleteSvg from '../chart/build/complete-svg.mjs'
+import Svg from '../Svg/constructor.mjs'
 
 export class Chart {
   static count = 0
@@ -38,12 +38,12 @@ export class Chart {
     }
     this.labels = [...this.labels]
     this.slices = buildDataSets(this.inputData)
-    this.svg = buildCompleteSvg(
-      this.id,
-      this.slices,
-      this.labels,
-      params.team
-    )
+    this.svg = new Svg({
+      chartId: this.id,
+      chartSlices: this.slices,
+      labels: this.labels,
+      isTeam: params.team
+    })
   }
 }
 

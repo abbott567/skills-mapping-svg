@@ -1,4 +1,4 @@
-import Chart from './Chart.mjs'
+import Chart from '../Chart/constructor.mjs'
 
 export class Team {
   id = 'Team'

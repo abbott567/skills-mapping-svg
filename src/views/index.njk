@@ -19,7 +19,7 @@
           <h3 class="chart-header">
             {{value.title}}
           </h3>
-          {{value.svg|safe}}
+          {{value.svg.element|safe}}
         </div>
       {%- endfor -%}
     </div>
@@ -39,7 +39,7 @@
             <h3 class="chart-header">
               {{value.title}}
             </h3>
-            {{value.svg|safe}}
+            {{value.svg.element|safe}}
           </div>
         {%- endfor -%}
       </div>

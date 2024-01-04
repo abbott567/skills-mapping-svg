@@ -1,5 +1,5 @@
 import arc from '../utils/arc.mjs'
-import config from '../config.mjs'
+import config from '../../../config/chart.mjs'
 
 const {
   radius

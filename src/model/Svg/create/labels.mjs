@@ -1,5 +1,5 @@
 import * as d3 from 'd3'
-import config from '../config.mjs'
+import config from '../../../config/chart.mjs'
 
 const {
   labelDistance,

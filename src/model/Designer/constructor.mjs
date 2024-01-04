@@ -1,5 +1,5 @@
-import groupDesignerStats from '../lib/csv/group-stats.mjs'
-import Chart from './Chart.mjs'
+import groupDesignerStats from '../../lib/csv/group-stats.mjs'
+import Chart from '../Chart/constructor.mjs'
 
 export class Designer {
   static all = new Set()

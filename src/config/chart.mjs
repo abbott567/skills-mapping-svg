@@ -1,4 +1,4 @@
-import colours from './utils/colours.mjs'
+import colours from '../model/Svg/utils/colours.mjs'
 
 function buildConfig () {
   // Change these to style the chart

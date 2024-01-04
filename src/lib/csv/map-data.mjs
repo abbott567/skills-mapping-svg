@@ -1,4 +1,4 @@
-import dataPaths from '../../data/data-paths.mjs'
+import dataPaths from '../../config/data-paths.mjs'
 import parseCSV from './parse.mjs'
 
 export function organiseRawData () {
