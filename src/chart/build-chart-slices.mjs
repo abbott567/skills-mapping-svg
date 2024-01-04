@@ -7,13 +7,15 @@ const {
 export function buildChartSlices (inputData) {
   const dataset = []
   let slice = 0
-  Object.keys(inputData).forEach(d => {
+  inputData.forEach(entry => {
     for (let i = 0; i < levels; i++) {
       dataset.push({
         slice,
-        name: d,
         level: i,
-        active: i < inputData[d]
+        active: i < entry.value,
+        label: entry.label,
+        associatedID: entry.associatedID,
+        designerID: entry.designerID
       })
     }
     slice += 1

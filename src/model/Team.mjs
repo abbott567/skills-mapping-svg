@@ -8,35 +8,35 @@ export class Team {
 
   constructor (data) {
     const { Designer } = data
-    this.stats = this.#blankOutStats(Designer)
-
-    this.inputData = {}
-    const skillCounts = Object.entries(this.stats).reduce((acc, [key, value]) => {
-      acc[key] = Object.keys(value).length
-      return acc
-    }, {})
-
-    // Loop to create an alternating pattern
-    Object.keys(skillCounts).forEach(category => {
-      this.inputData[category] = []
-      for (let i = 0; i < skillCounts[category]; i++) {
-        for (const designer of Designer.all) {
-          if (designer.stats[category] && Object.values(designer.stats[category])[i] !== undefined) {
-            this.inputData[category].push(Object.values(designer.stats[category])[i])
-          }
+    this.inputData = []
+    const skillsOrder = [...Designer.all][0].inputData.map(skill => skill.label)
+    // Iterate over each skill label
+    skillsOrder.forEach(label => {
+      // For each skill, iterate over all designers
+      Designer.all.forEach(designer => {
+        // Find the value for the current skill and designer
+        const skillData = designer.inputData.find(skill => skill.label === label)
+        if (skillData) {
+          this.inputData.push({
+            value: skillData.value,
+            label: skillData.label,
+            associatedID: this.id,
+            designerID: designer.id
+          })
         }
-      }
+      })
     })
-
     this.#buildAllCharts()
   }
 
   #buildChart (key) {
+    const filteredInputData = this.inputData.filter(item => {
+      const category = item.label.split(' (')[1].split(')')[0]
+      return category === key
+    })
     const chart = new Chart({
       key,
-      stats: this.stats[key],
-      inputData: this.inputData[key],
-      id: this.id,
+      inputData: filteredInputData,
       team: true
     })
     return chart

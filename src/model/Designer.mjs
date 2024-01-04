@@ -5,6 +5,7 @@ export class Designer {
   static all = new Set()
   id
   stats
+  inputData
   charts = {}
 
   constructor (params) {
@@ -15,14 +16,27 @@ export class Designer {
   #groupDesignSkills (params) {
     const groupedSkills = groupDesignerStats(params)
     this.stats = groupedSkills
+    this.inputData = Object.entries(groupedSkills).flatMap(([category, skills]) =>
+      Object.entries(skills).map(([skillName, skillLevel]) => ({
+        value: skillLevel,
+        label: `${skillName} (${category})`,
+        associatedID: this.id,
+        designerID: this.id
+      }))
+    )
     this.#buildAllCharts()
   }
 
   #buildChart (key) {
+    const filteredInputData = this.inputData.filter(item => {
+      const category = item.label.split(' (')[1].split(')')[0]
+      return category === key
+    })
+
     const chart = new Chart({
       key,
-      stats: this.stats[key],
-      id: this.id
+      inputData: filteredInputData,
+      team: false
     })
     return chart
   }
