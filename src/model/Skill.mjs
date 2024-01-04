@@ -22,7 +22,7 @@ export class Skill {
     Skill.all.add(this)
   }
 
-  static findByID (id) {
+  static findById (id) {
     for (const entry of Skill.all) {
       if (entry.id === id) return entry
     }

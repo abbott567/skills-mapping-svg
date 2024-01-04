@@ -16,8 +16,8 @@ export function buildChartSlices (inputData) {
         label: entry.label,
         category: entry.category,
         combinedLabel: `${entry.label} (${entry.category})`,
-        associatedID: entry.associatedID,
-        designerID: entry.designerID
+        associatedId: entry.associatedId,
+        designerId: entry.designerId
       })
     }
     slice += 1

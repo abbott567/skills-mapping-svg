@@ -9,7 +9,7 @@ export class Designer {
   charts = {}
 
   constructor (params) {
-    this.id = params.id || params.ID
+    this.id = params.id || params.Id || params.ID
     this.#groupDesignSkills(params)
   }
 
@@ -22,8 +22,8 @@ export class Designer {
         label: skillName,
         category,
         combinedLabel: `${skillName} (${category})`,
-        associatedID: this.id,
-        designerID: this.id
+        associatedId: this.id,
+        designerId: this.id
       }))
     )
     this.#buildAllCharts()
@@ -56,7 +56,7 @@ export class Designer {
     this.#saveChart(capabilitiesChart)
   }
 
-  static findByID (id) {
+  static findById (id) {
     for (const entry of Designer.all) {
       if (entry.id === id) return entry
     }

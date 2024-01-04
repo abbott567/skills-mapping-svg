@@ -5,8 +5,8 @@ import camelcase from 'camelcase'
 export class Chart {
   static count = 0
   id
-  associatedID
-  designerID
+  associatedId
+  designerId
   domId
   title
   key
@@ -17,8 +17,8 @@ export class Chart {
 
   constructor (params) {
     this.id = Chart.count += 1
-    this.associatedID = params.inputData[0].associatedID
-    this.designerID = params.inputData[0].designerID
+    this.associatedId = params.inputData[0].associatedId
+    this.designerId = params.inputData[0].designerId
     if (params.key === 'Hard Skills') {
       this.domId = `chart-${params.id}-hard-skills`
       this.inputData = params.inputData

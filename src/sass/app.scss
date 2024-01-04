@@ -11,24 +11,3 @@
 
 // Theme styles
 @use 'theme/colours';
-
-
-.slice {
-  &__score {
-    // opacity: 0;
-  }
-  &__score-text {
-    font-weight: 500;
-  }
-  &:focus {
-    .slice__level {
-      fill: var(--accentBackground);
-    }
-    .slice__level--active {
-      fill: var(--text);
-    }
-    .slice__score {
-      opacity: 1;
-    }
-  }
-}

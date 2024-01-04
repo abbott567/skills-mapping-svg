@@ -1,6 +1,21 @@
+@mixin sliceHoverAndFocus {
+  .slice__level {
+    fill: var(--accentBackground);
+  }
+  .slice__level--active {
+    fill: var(--text);
+  }
+  .slice__score {
+    opacity: 1;
+  }
+}
+
 .chart-container {
   position: relative;
   padding: var(--s0);
+  .rings {
+    pointer-events: none;
+  }
   .chart-header {
     text-align: center;
     position: absolute;
@@ -15,4 +30,28 @@
   svg {
     width: 100%;
   }
+
+  .slice {
+    &__score {
+      opacity: 0;
+    }
+    &__score-text {
+      font-weight: 500;
+    }
+    &:hover {
+      @include sliceHoverAndFocus;
+      .slice__level, .slice__score {
+        transition: all 2s ease;
+      }
+    }
+    &:focus {
+      @include sliceHoverAndFocus;
+      outline-color: var(--text);
+      outline-width: 5px;
+      outline-offset: 1rem;
+    }
+  }
 }
+
+
+

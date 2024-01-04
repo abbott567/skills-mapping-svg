@@ -19,8 +19,8 @@ export class Team {
             label: skillData.label,
             category: skillData.category,
             combinedLabel: skillData.combinedLabel,
-            associatedID: this.id,
-            designerID: designer.id
+            associatedId: this.id,
+            designerId: designer.id
           })
         }
       })

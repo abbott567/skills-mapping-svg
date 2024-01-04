@@ -22,7 +22,7 @@ export class Capability {
     this.registerSkills()
   }
 
-  static findByID (id) {
+  static findById (id) {
     for (const entry of Capability.all) {
       if (entry.id === id) return entry
     }

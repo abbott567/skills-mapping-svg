@@ -26,14 +26,14 @@ function getEndAngle (i, totalSlices) {
 }
 
 function calculateCentroid (level, slice, totalSlices) {
+  // Calculate angles
   const startAngle = getStartAngle(slice, totalSlices)
   const endAngle = getEndAngle(slice, totalSlices)
   const midAngle = (startAngle + endAngle) / 2
-
+  // Calculate Radius'
   const startRadius = level * ringWidth + innerRadiusBuffer
   const endRadius = startRadius + ringWidth
   const midRadius = (startRadius + endRadius) / 2
-
   return [
     midRadius * Math.cos(midAngle - Math.PI / 2), // Adjusted by -90 degrees to align with standard coordinate system
     midRadius * Math.sin(midAngle - Math.PI / 2)
