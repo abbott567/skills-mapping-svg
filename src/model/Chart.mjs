@@ -34,10 +34,7 @@ export class Chart {
     this.title = params.key
     this.key = camelcase(params.key)
     for (const entry of params.inputData) {
-      if (entry.label.includes(params.key)) {
-        const cleanLabel = entry.label.split(' (')[0]
-        this.labels.add(cleanLabel)
-      }
+      this.labels.add(entry.label)
     }
     this.labels = [...this.labels]
     this.slices = buildChartSlices(this.inputData)

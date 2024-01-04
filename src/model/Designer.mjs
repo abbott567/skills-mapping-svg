@@ -19,7 +19,9 @@ export class Designer {
     this.inputData = Object.entries(groupedSkills).flatMap(([category, skills]) =>
       Object.entries(skills).map(([skillName, skillLevel]) => ({
         value: skillLevel,
-        label: `${skillName} (${category})`,
+        label: skillName,
+        category,
+        combinedLabel: `${skillName} (${category})`,
         associatedID: this.id,
         designerID: this.id
       }))
@@ -29,7 +31,7 @@ export class Designer {
 
   #buildChart (key) {
     const filteredInputData = this.inputData.filter(item => {
-      const category = item.label.split(' (')[1].split(')')[0]
+      const category = item.category
       return category === key
     })
 

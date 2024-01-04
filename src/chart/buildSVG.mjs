@@ -102,10 +102,10 @@ export function buildSVG (chartId, chartSlices, labels, team = false) {
         return id
       })
 
-    const labelIndex = groupIndex % labels.length
-    const labelForSlice = labels[labelIndex]
+    const category = groupData[0].category
+    const label = groupData[0].label
     group.append('title')
-      .text(`Designer ${designerID}, ${labelForSlice} score: ${score}`)
+      .text(`${category}, Designer ${designerID}, ${label} score: ${score}`)
   })
 
   // Render the overlays

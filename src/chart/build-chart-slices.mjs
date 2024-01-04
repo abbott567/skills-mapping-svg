@@ -14,6 +14,8 @@ export function buildChartSlices (inputData) {
         level: i,
         active: i < entry.value,
         label: entry.label,
+        category: entry.category,
+        combinedLabel: `${entry.label} (${entry.category})`,
         associatedID: entry.associatedID,
         designerID: entry.designerID
       })
