@@ -5,4 +5,7 @@ export function groupChartSlices (chartSlices) {
   const groupedChartSlices = d3.group(chartSlices, d => d.slice)
   return groupedChartSlices
 }
-export default groupChartSlices
+
+export default {
+  chartSlices: groupChartSlices
+}

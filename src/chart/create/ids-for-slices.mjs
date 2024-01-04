@@ -1,4 +1,4 @@
-export function setIdForSlices (slicesWithoutIds) {
+export function createIdsForSlices (slicesWithoutIds) {
   return slicesWithoutIds.each(function () {
     const svg = this.closest('svg')
     const svgId = svg.id
@@ -8,4 +8,4 @@ export function setIdForSlices (slicesWithoutIds) {
   })
 }
 
-export default setIdForSlices
+export default createIdsForSlices

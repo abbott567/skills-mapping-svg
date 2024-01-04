@@ -1,5 +1,5 @@
 import * as d3 from 'd3'
-import config from './config.mjs'
+import config from '../config.mjs'
 
 const {
   labelDistance,
@@ -7,7 +7,7 @@ const {
   font
 } = config
 
-export function renderLabels (svg, labels) {
+export function createLabels (svg, labels) {
   const numberOfLabels = labels.length
   const labelAngle = 2 * Math.PI / numberOfLabels
 
@@ -50,4 +50,4 @@ export function renderLabels (svg, labels) {
     })
 }
 
-export default renderLabels
+export default createLabels

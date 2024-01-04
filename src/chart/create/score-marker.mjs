@@ -1,8 +1,8 @@
-import config from './config.mjs'
+import config from '../config.mjs'
 
 const { font } = config
 
-export function renderScores (scoreGroup, score) {
+export function createScoreMarker (scoreGroup, score) {
   scoreGroup.append('circle')
     .attr('cx', 0)
     .attr('cy', 0)
@@ -18,4 +18,4 @@ export function renderScores (scoreGroup, score) {
     .attr('class', 'slice__score-text')
 }
 
-export default renderScores
+export default createScoreMarker

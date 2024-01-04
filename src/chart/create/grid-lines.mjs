@@ -1,11 +1,11 @@
-import arc from './arc.mjs'
-import config from './config.mjs'
+import arc from '../utils/arc.mjs'
+import config from '../config.mjs'
 
 const {
   radius
 } = config
 
-export function renderOutlines (svg, labels) {
+export function createGridLines (svg, labels) {
   // Create a group to hold the rings
   const rings = svg.append('g')
     .attr('class', 'rings')
@@ -43,4 +43,4 @@ export function renderOutlines (svg, labels) {
   }
 }
 
-export default renderOutlines
+export default createGridLines

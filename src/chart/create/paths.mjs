@@ -1,7 +1,7 @@
-import arc from './arc.mjs'
-import { formatColours, colours } from './colours.mjs'
+import arc from '../utils/arc.mjs'
+import { formatColours, colours } from '../utils/colours.mjs'
 
-export function renderLevels (slice, groupData, isTeam, chartSlices, labels) {
+export function createPaths (slice, groupData, isTeam, chartSlices, labels) {
   slice.selectAll('path')
     .data(groupData)
     .enter()
@@ -14,4 +14,4 @@ export function renderLevels (slice, groupData, isTeam, chartSlices, labels) {
     .classed('slice__level--active', d => d.active)
 }
 
-export default renderLevels
+export default createPaths

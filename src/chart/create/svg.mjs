@@ -1,11 +1,11 @@
-import config from './config.mjs'
+import config from '../config.mjs'
 
 const {
   width,
   height
 } = config
 
-export function renderSvgElement (chartId, body) {
+export function createSvg (chartId, body) {
   const svg = body.append('svg')
     .attr('width', width)
     .attr('height', height)
@@ -13,4 +13,4 @@ export function renderSvgElement (chartId, body) {
   return svg
 }
 
-export default renderSvgElement
+export default createSvg
