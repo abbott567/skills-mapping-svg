@@ -1,14 +1,22 @@
 import Chart from '../Chart/constructor.mjs'
+import validateTeamData from './validator.mjs'
 
 export class Team {
   id = 'Team'
   stats
   charts = {}
-  inputData
+  data
+  inputData = []
 
   constructor (data) {
-    const { Designer } = data
-    this.inputData = []
+    const validData = validateTeamData(data)
+    this.data = validData
+    this.#createParams()
+    this.#buildAllCharts()
+  }
+
+  #createParams () {
+    const { Designer } = this.data
     const firstDesignerInputData = Array.from(Designer.all)[0].inputData
     const skillsOrder = firstDesignerInputData.map(skill => skill.label)
     skillsOrder.forEach(label => {
@@ -26,7 +34,6 @@ export class Team {
         }
       })
     })
-    this.#buildAllCharts()
   }
 
   #buildChart (key) {
