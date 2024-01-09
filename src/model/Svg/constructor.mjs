@@ -22,6 +22,23 @@ class Svg {
     this.element = this.#buildSvgElement()
   }
 
+  #buildSvgElement () {
+    // Create and append a new <svg> element and append it to <body>
+    const svg = append.svgElement(this.data.chartId, this.#dom)
+    // Create a <g> (group) element to hold the slices and append it to SVG
+    const slicesContainer = append.slicesContainer(svg)
+    // Create a <g> for each slice and append it to the slices container <g>
+    const slices = append.sliceGroups(slicesContainer, this.data.groupedChartSlices)
+    // Iterate over each of slice <g>'s
+    slices.each(([_groupName, groupData], index, nodes) => this.#processSlices(groupData, nodes[index]))
+    // Create the labels and append them to the <svg>
+    append.labels(svg, this.data.labels)
+    // Create the gridlines and append them to the <svg>
+    append.gridLines(svg, this.data.labels)
+    this.save()
+    return optimiseAndExtractSVG(this.#dom)
+  }
+
   #processSlices (groupData, sliceElement) {
     // Create data variables
     const slice = d3.select(sliceElement)
@@ -43,23 +60,6 @@ class Svg {
     append.scoreMarker(scoreGroup, this.data.score)
     // Add title
     append.title(slice, this.data.title)
-  }
-
-  #buildSvgElement () {
-    // Create and append a new <svg> element and append it to <body>
-    const svg = append.svgElement(this.data.chartId, this.#dom)
-    // Create a <g> (group) element to hold the slices and append it to SVG
-    const slicesContainer = append.slicesContainer(svg)
-    // Create a <g> for each slice and append it to the slices container <g>
-    const slices = append.sliceGroups(slicesContainer, this.data.groupedChartSlices)
-    // Iterate over each of slice <g>'s
-    slices.each(([_groupName, groupData], index, nodes) => this.#processSlices(groupData, nodes[index]))
-    // Create the labels and append them to the <svg>
-    append.labels(svg, this.data.labels)
-    // Create the gridlines and append them to the <svg>
-    append.gridLines(svg, this.data.labels)
-    this.save()
-    return optimiseAndExtractSVG(this.#dom)
   }
 
   save () {
