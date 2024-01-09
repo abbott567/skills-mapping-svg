@@ -2,7 +2,7 @@ import config from '../../../config/chart.mjs'
 
 const { font } = config
 
-export function createScoreMarker (scoreGroup, score) {
+export function appendScoreMarker (scoreGroup, score) {
   scoreGroup.append('circle')
     .attr('cx', 0)
     .attr('cy', 0)
@@ -18,4 +18,4 @@ export function createScoreMarker (scoreGroup, score) {
     .attr('class', 'slice__score-text')
 }
 
-export default createScoreMarker
+export default appendScoreMarker

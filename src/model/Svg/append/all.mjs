@@ -7,7 +7,7 @@ import createScoreGroup from './score-group.mjs'
 import createScoreMarker from './score-marker.mjs'
 import createSliceGroups from './slice-groups.mjs'
 import createSlicesContainer from './slices-container.mjs'
-import createSvg from './svg.mjs'
+import createSvgElement from './svg-element.mjs'
 import createTitle from './title.mjs'
 
 export default {
@@ -20,6 +20,6 @@ export default {
   scoreMarker: createScoreMarker,
   sliceGroups: createSliceGroups,
   slicesContainer: createSlicesContainer,
-  svg: createSvg,
+  svgElement: createSvgElement,
   title: createTitle
 }

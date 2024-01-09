@@ -5,7 +5,7 @@ const {
   height
 } = config
 
-export function createSvg (chartId, body) {
+export function appendSvgElement (chartId, body) {
   const svg = body.append('svg')
     .attr('width', width)
     .attr('height', height)
@@ -13,4 +13,4 @@ export function createSvg (chartId, body) {
   return svg
 }
 
-export default createSvg
+export default appendSvgElement

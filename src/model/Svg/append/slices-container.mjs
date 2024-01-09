@@ -1,4 +1,4 @@
-export function createSlicesContainer (svg) {
+export function appendSlicesContainer (svg) {
   // Creates a group to hold all the slices
   const chartId = svg.attr('id')
   const slices = svg.append('g')
@@ -7,4 +7,4 @@ export function createSlicesContainer (svg) {
   return slices
 }
 
-export default createSlicesContainer
+export default appendSlicesContainer

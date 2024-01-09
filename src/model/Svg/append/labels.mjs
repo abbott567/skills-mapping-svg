@@ -7,7 +7,7 @@ const {
   font
 } = config
 
-export function createLabels (svg, labels) {
+export function appendLabels (svg, labels) {
   const numberOfLabels = labels.length
   const labelAngle = 2 * Math.PI / numberOfLabels
 
@@ -50,4 +50,4 @@ export function createLabels (svg, labels) {
     })
 }
 
-export default createLabels
+export default appendLabels

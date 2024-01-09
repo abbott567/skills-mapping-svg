@@ -1,4 +1,4 @@
-export function createIdsForScores (scoresWithoutIds) {
+export function appendIdsForScores (scoresWithoutIds) {
   return scoresWithoutIds.each(function () {
     const slice = this.closest('.slice')
     const sliceId = slice.id
@@ -6,4 +6,4 @@ export function createIdsForScores (scoresWithoutIds) {
   })
 }
 
-export default createIdsForScores
+export default appendIdsForScores

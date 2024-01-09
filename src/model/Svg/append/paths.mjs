@@ -1,7 +1,7 @@
 import arc from '../utils/arc.mjs'
 import { formatColours, colours } from '../utils/colours.mjs'
 
-export function createPaths (slice, groupData, isTeam, chartSlices, labels) {
+export function appendPaths (slice, groupData, isTeam, chartSlices, labels) {
   slice.selectAll('path')
     .data(groupData)
     .enter()
@@ -14,4 +14,4 @@ export function createPaths (slice, groupData, isTeam, chartSlices, labels) {
     .classed('slice__level--active', d => d.active)
 }
 
-export default createPaths
+export default appendPaths

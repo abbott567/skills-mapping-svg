@@ -5,7 +5,7 @@ const {
   radius
 } = config
 
-export function createGridLines (svg, labels) {
+export function appendGridLines (svg, labels) {
   // Create a group to hold the rings
   const rings = svg.append('g')
     .attr('class', 'rings')
@@ -43,4 +43,4 @@ export function createGridLines (svg, labels) {
   }
 }
 
-export default createGridLines
+export default appendGridLines

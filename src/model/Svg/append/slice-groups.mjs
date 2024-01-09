@@ -1,9 +1,9 @@
 import config from '../../../config/chart.mjs'
-import createIdsForSlices from '../create/ids-for-slices.mjs'
+import appendIdsForSlices from '../append/ids-for-slices.mjs'
 
 const { radius } = config
 
-export function createSliceGroups (slicesContainer, groupedChartSlices) {
+export function appendSliceGroups (slicesContainer, groupedChartSlices) {
   // Creates the slices inside the slices group
   const slicesWithoutIds = slicesContainer.selectAll('g.slices')
     .data(groupedChartSlices)
@@ -21,8 +21,8 @@ export function createSliceGroups (slicesContainer, groupedChartSlices) {
     })
     .attr('tabindex', 0)
     .attr('transform', `translate(${radius},${radius})`)
-  const slicesWithIds = createIdsForSlices(slicesWithoutIds)
+  const slicesWithIds = appendIdsForSlices(slicesWithoutIds)
   return slicesWithIds
 }
 
-export default createSliceGroups
+export default appendSliceGroups
