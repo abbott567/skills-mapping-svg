@@ -17,6 +17,7 @@ export class Chart {
   title
   key
   inputData
+  isTeam
   labels = new Set()
   svg
   slices
@@ -30,6 +31,7 @@ export class Chart {
     this.domId = sanitisedParams.domId
     this.inputData = sanitisedParams.inputData
     this.title = sanitisedParams.title
+    this.isTeam = sanitisedParams.isTeam
     this.key = camelcase(params.key)
     this.#buildLabels()
     this.#buildSlices()
@@ -37,7 +39,7 @@ export class Chart {
       chartId: this.id,
       chartSlices: this.slices,
       labels: this.labels,
-      isTeam: params.isTeam
+      isTeam: this.isTeam
     })
   }
 
