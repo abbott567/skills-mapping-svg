@@ -1,3 +1,4 @@
+import createFakeDom from './fake-dom.mjs'
 import createGridLines from './grid-lines.mjs'
 import createIdsForScores from './ids-for-scores.mjs'
 import createIdsForSlices from './ids-for-slices.mjs'
@@ -11,6 +12,7 @@ import createSvgElement from './svg-element.mjs'
 import createTitle from './title.mjs'
 
 export default {
+  fakeDom: createFakeDom,
   gridLines: createGridLines,
   idsForScores: createIdsForScores,
   idsForSlices: createIdsForSlices,
