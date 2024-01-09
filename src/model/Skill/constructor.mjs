@@ -1,5 +1,5 @@
-import camelCase from 'camelcase'
-import slugify from 'slugify'
+import validateSkillParams from './validator.mjs'
+import sanitiseSkillParams from './sanitiser.mjs'
 
 export class Skill {
   static all = new Set()
@@ -11,11 +11,13 @@ export class Skill {
   type
 
   constructor (params) {
-    this.id = Skill.count += 1
-    this.name = params.name
-    this.slug = slugify(this.name, { lower: true })
-    this.key = camelCase(this.slug)
-    this.type = params.type
+    params.id = Skill.count += 1
+    const validParams = validateSkillParams(params)
+    const sanitisedParams = sanitiseSkillParams(validParams)
+    this.type = sanitisedParams.type
+    this.name = sanitisedParams.name
+    this.slug = sanitisedParams.slug
+    this.key = sanitisedParams.key
   }
 
   save () {
