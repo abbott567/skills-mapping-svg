@@ -1,6 +1,12 @@
-import buildDataSets from './build-datasets.mjs'
 import camelcase from 'camelcase'
+import validateChartParams from './validator.mjs'
+import sanitiseParams from './sanitiser.mjs'
 import Svg from '../Svg/constructor.mjs'
+import config from '../../config/chart.mjs'
+
+const {
+  levels
+} = config
 
 export class Chart {
   static count = 0
@@ -16,34 +22,52 @@ export class Chart {
   slices
 
   constructor (params) {
+    const validParams = validateChartParams(params)
+    const sanitisedParams = sanitiseParams(validParams)
     this.id = Chart.count += 1
-    this.associatedId = params.inputData[0].associatedId
-    this.designerId = params.inputData[0].designerId
-    if (params.key === 'Hard Skills') {
-      this.domId = `chart-${params.id}-hard-skills`
-      this.inputData = params.inputData
-    } else if (params.key === 'Soft Skills') {
-      this.domId = `chart-${params.id}-soft-skills`
-      this.inputData = params.inputData
-    } else if (params.key === 'Capabilities') {
-      this.domId = `chart-${params.id}-capabilities`
-      this.inputData = params.inputData
-    } else {
-      throw Error(`params.key not valid when constructing charts: '${params.key}'`)
-    }
-    this.title = params.key
+    this.associatedId = sanitisedParams.associatedId
+    this.designerId = sanitisedParams.designerId
+    this.domId = sanitisedParams.domId
+    this.inputData = sanitisedParams.inputData
+    this.title = sanitisedParams.title
     this.key = camelcase(params.key)
-    for (const entry of params.inputData) {
-      this.labels.add(entry.label)
-    }
-    this.labels = [...this.labels]
-    this.slices = buildDataSets(this.inputData)
+    this.#buildLabels()
+    this.#buildSlices()
     this.svg = new Svg({
       chartId: this.id,
       chartSlices: this.slices,
       labels: this.labels,
-      isTeam: params.team
+      isTeam: params.isTeam
     })
+  }
+
+  #buildLabels () {
+    const labelSet = new Set()
+    for (const entry of this.inputData) {
+      labelSet.add(entry.label)
+    }
+    this.labels = [...labelSet]
+  }
+
+  #buildSlices () {
+    const slices = []
+    let slice = 0
+    this.inputData.forEach(entry => {
+      for (let i = 0; i < levels; i++) {
+        slices.push({
+          slice,
+          level: i,
+          active: i < entry.value,
+          label: entry.label,
+          category: entry.category,
+          combinedLabel: `${entry.label} (${entry.category})`,
+          associatedId: entry.associatedId,
+          designerId: entry.designerId
+        })
+      }
+      slice += 1
+    })
+    this.slices = slices
   }
 }
 

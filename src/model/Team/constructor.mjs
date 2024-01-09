@@ -11,11 +11,11 @@ export class Team {
   constructor (data) {
     const validData = validateTeamData(data)
     this.data = validData
-    this.#createParams()
+    this.#buildParams()
     this.#buildAllCharts()
   }
 
-  #createParams () {
+  #buildParams () {
     const { Designer } = this.data
     const firstDesignerInputData = Array.from(Designer.all)[0].inputData
     const skillsOrder = firstDesignerInputData.map(skill => skill.label)
@@ -44,7 +44,7 @@ export class Team {
     const chart = new Chart({
       key,
       inputData: filteredInputData,
-      team: true
+      isTeam: true
     })
     return chart
   }
