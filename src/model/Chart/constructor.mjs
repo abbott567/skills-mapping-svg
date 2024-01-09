@@ -44,7 +44,6 @@ export class Chart {
       labels: this.labels,
       isTeam: params.team
     })
-    console.log(this.svg)
   }
 }
 

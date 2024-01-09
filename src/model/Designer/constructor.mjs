@@ -1,5 +1,6 @@
 import groupDesignerStats from '../../lib/csv/group-stats.mjs'
 import Chart from '../Chart/constructor.mjs'
+import validateDesignerParams from './validator.mjs'
 
 export class Designer {
   static all = new Set()
@@ -7,16 +8,19 @@ export class Designer {
   stats
   inputData
   charts = {}
+  #groupedSkills
 
   constructor (params) {
+    const validParams = validateDesignerParams(params)
     this.id = params.id || params.Id || params.ID
-    this.#groupDesignSkills(params)
+    this.#groupedSkills = groupDesignerStats(validParams)
+    this.stats = this.#groupedSkills
+    this.#createInputData()
+    this.#buildAllCharts()
   }
 
-  #groupDesignSkills (params) {
-    const groupedSkills = groupDesignerStats(params)
-    this.stats = groupedSkills
-    this.inputData = Object.entries(groupedSkills).flatMap(([category, skills]) =>
+  #createInputData () {
+    this.inputData = Object.entries(this.#groupedSkills).flatMap(([category, skills]) =>
       Object.entries(skills).map(([skillName, skillLevel]) => ({
         value: skillLevel,
         label: skillName,
@@ -26,7 +30,6 @@ export class Designer {
         designerId: this.id
       }))
     )
-    this.#buildAllCharts()
   }
 
   #buildChart (key) {

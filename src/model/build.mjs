@@ -4,10 +4,6 @@ import Capability from './Capability/constructor.mjs'
 import Team from './Team/constructor.mjs'
 
 export function buildDataModel (rawData) {
-  for (const entry of rawData.designerData) {
-    const designer = new Designer(entry)
-    designer.save()
-  }
   for (const entry of rawData.mappingsData['Hard Skills']) {
     const params = {
       name: entry,
@@ -30,6 +26,10 @@ export function buildDataModel (rawData) {
     }
     const capability = new Capability(params)
     capability.save()
+  }
+  for (const entry of rawData.designerData) {
+    const designer = new Designer(entry)
+    designer.save()
   }
 
   const data = {

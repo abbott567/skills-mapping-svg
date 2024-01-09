@@ -9,7 +9,8 @@ export class Team {
   constructor (data) {
     const { Designer } = data
     this.inputData = []
-    const skillsOrder = [...Designer.all][0].inputData.map(skill => skill.label)
+    const firstDesignerInputData = Array.from(Designer.all)[0].inputData
+    const skillsOrder = firstDesignerInputData.map(skill => skill.label)
     skillsOrder.forEach(label => {
       Designer.all.forEach(designer => {
         const skillData = designer.inputData.find(skill => skill.label === label)
