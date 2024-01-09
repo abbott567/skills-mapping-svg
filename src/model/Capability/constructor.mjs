@@ -1,9 +1,7 @@
-import camelCase from 'camelcase'
-import slugify from 'slugify'
 import Skill from '../Skill/constructor.mjs'
 import data from '../../lib/csv/map-data.mjs'
-
-// const mappingsData = parseCSV(dataPaths.mappings, { columns: true })
+import validateCapabilityParams from './validator.mjs'
+import sanitiseCapabilityParams from './sanitiser.mjs'
 
 export class Capability {
   static all = new Set()
@@ -15,10 +13,13 @@ export class Capability {
   skills = new Set()
 
   constructor (params) {
-    this.id = Capability.count += 1
-    this.name = params.name
-    this.slug = slugify(this.name)
-    this.key = camelCase(this.slug)
+    params.id = Capability.count += 1
+    const validParams = validateCapabilityParams(params)
+    const sanitisedParams = sanitiseCapabilityParams(validParams)
+    this.id = sanitisedParams.id
+    this.name = sanitisedParams.name
+    this.slug = sanitisedParams.slug
+    this.key = sanitisedParams.key
     this.registerSkills()
   }
 
