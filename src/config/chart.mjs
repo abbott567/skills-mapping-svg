@@ -1,6 +1,6 @@
 import colours from '../model/Svg/utils/colours.mjs'
 
-function buildConfig () {
+function createBaseConfig () {
   // Change these to style the chart
   const config = {
     width: 500,
@@ -16,14 +16,22 @@ function buildConfig () {
       colours: colours.stroke
     }
   }
+  return config
+}
 
-  // Auto calculations based on config
+function augmentConfig (config) {
+  // Calculated properties based on the base configuration
   config.radius = config.width / 2
   config.zoom = config.levels * 1.3
   config.padAngle = config.spaceBetweenArcs / config.radius
   config.colours = colours
 
   return config
+}
+
+function buildConfig () {
+  const baseConfig = createBaseConfig()
+  return augmentConfig(baseConfig)
 }
 
 export const config = buildConfig()
