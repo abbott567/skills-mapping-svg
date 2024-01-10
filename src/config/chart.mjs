@@ -6,7 +6,6 @@ function buildConfig () {
     width: 500,
     height: 500,
     levels: 10,
-    spaceBetweenArcs: 0,
     labelDistance: 190,
     font: {
       size: 13,

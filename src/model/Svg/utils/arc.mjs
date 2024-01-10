@@ -5,7 +5,6 @@ const {
   width,
   height,
   padAngle,
-  spaceBetweenArcs,
   zoom
 } = config
 
@@ -47,7 +46,7 @@ const ringWidth = (halfWidth - innerRadiusBuffer) / (zoom + 1)
 function makePath (level, slice, totalSlices) {
   const startRadius = level * ringWidth + innerRadiusBuffer
   const path = d3.arc()
-    .innerRadius(startRadius + spaceBetweenArcs)
+    .innerRadius(startRadius)
     .outerRadius(startRadius + ringWidth)
     .startAngle(getAngle(slice, totalSlices))
     .endAngle(getEndAngle(slice, totalSlices))
