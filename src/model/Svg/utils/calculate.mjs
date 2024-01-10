@@ -21,10 +21,10 @@ export function calculateTotalSlices (isTeam, chartSlices, labels) {
 }
 
 export function calculateOutermostRadius () {
-  const halfWidth = Math.min(config.width, config.height) / 2;
-  const innerRadiusBuffer = 0;
-  const ringWidth = (halfWidth - innerRadiusBuffer) / (config.zoom + 1);
-  return ringWidth * config.levels;
+  const halfWidth = Math.min(config.width, config.height) / 2
+  const innerRadiusBuffer = 0
+  const ringWidth = (halfWidth - innerRadiusBuffer) / (config.zoom + 1)
+  return ringWidth * config.levels
 }
 
 export function calculateLabelPosition (labelOffset) {
