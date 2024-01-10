@@ -1,7 +1,7 @@
-import Designer from './Designer/constructor.mjs'
-import Skill from './Skill/constructor.mjs'
-import Capability from './Capability/constructor.mjs'
-import Team from './Team/constructor.mjs'
+import Designer from '../model/Designer/constructor.mjs'
+import Skill from '../model/Skill/constructor.mjs'
+import Capability from '../model/Capability/constructor.mjs'
+import Team from '../model/Team/constructor.mjs'
 
 export function buildDataModel (rawData) {
   for (const entry of rawData.mappingsData['Hard Skills']) {

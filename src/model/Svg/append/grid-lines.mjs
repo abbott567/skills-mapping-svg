@@ -1,5 +1,6 @@
 import arc from '../utils/arc.mjs'
-import config from '../../../config/chart.mjs'
+import config from '../../../lib/build-config.mjs'
+import calculate from '../utils/calculate.mjs'
 
 const {
   radius
@@ -26,7 +27,7 @@ export function appendGridLines (svg, labels) {
   // Add segment lines
   const totalSegments = labels.length
   const labelAngle = 2 * Math.PI / totalSegments // Angle covered by each label
-  const outermostRadius = ringWidth * numberOfRings
+  const outermostRadius = calculate.outerMostRadius()
 
   for (let i = 0; i < totalSegments; i++) {
     const angle = i * labelAngle // Updated angle calculation

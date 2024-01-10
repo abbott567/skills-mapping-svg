@@ -7,10 +7,10 @@ const exportPath = path.join('dist', 'export')
 export async function saveScreenshots (entity) {
   const browser = await puppeteer.launch({
     headless: 'new',
-    args: ['--window-size=1650,1000']
+    args: ['--window-size=1400,1000']
   })
   const [page] = await browser.pages()
-  await page.setViewport({ width: 1650, height: 720 })
+  await page.setViewport({ width: 1400, height: 720 })
   await page.setContent(jetpack.read('dist/index.html'))
   // Wait for the section to load
   await page.waitForSelector('footer')

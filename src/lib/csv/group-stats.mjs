@@ -1,6 +1,6 @@
 import groupByColumns from './group-by-columns.mjs'
 import parseCSV from './parse.mjs'
-import dataPaths from '../../config/data-paths.mjs'
+import dataPaths from '../build-data-paths.mjs'
 
 const skillsMappingsParsed = parseCSV(dataPaths.mappings)
 const skillMappingsData = groupByColumns(skillsMappingsParsed)

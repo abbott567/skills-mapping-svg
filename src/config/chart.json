@@ -1,0 +1,13 @@
+{
+  "width": 500,
+  "height": 500,
+  "levels": 10,
+  "labelOffset": 0,
+  "font": {
+    "size": 13,
+    "weight": 500
+  },
+  "stroke": {
+    "width": "1px"
+  }
+}

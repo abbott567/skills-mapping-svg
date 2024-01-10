@@ -2,7 +2,7 @@ import camelcase from 'camelcase'
 import validateChartParams from './validator.mjs'
 import sanitiseParams from './sanitiser.mjs'
 import Svg from '../Svg/constructor.mjs'
-import config from '../../config/chart.mjs'
+import config from '../../lib/build-config.mjs'
 
 const {
   levels

@@ -1,4 +1,4 @@
-import config from '../../../config/chart.mjs'
+import config from '../../../lib/build-config.mjs'
 
 const { font } = config
 

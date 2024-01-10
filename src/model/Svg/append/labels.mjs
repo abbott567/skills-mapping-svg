@@ -1,9 +1,10 @@
 import * as d3 from 'd3'
-import config from '../../../config/chart.mjs'
+import config from '../../../lib/build-config.mjs'
 import labelArc from '../utils/labelArc.mjs'
+import calculate from '../utils/calculate.mjs'
 
 const {
-  labelDistance,
+  labelOffset,
   radius,
   font
 } = config
@@ -12,7 +13,7 @@ const {
 
 export function appendLabels (svg, labels) {
   const numberOfLabels = labels.length
-
+  const labelPosition = calculate.labelPosition(labelOffset)
   const labelContainer = svg.append('g')
     .attr('class', 'labelContainer')
     .attr('transform', `translate(${radius},${radius})`)
@@ -27,8 +28,8 @@ export function appendLabels (svg, labels) {
         .attr('id', angles.pathId)
         .attr('class', 'labelArc')
         .attr('d', d3.arc()
-          .innerRadius(labelDistance)
-          .outerRadius(labelDistance)
+          .innerRadius(labelPosition)
+          .outerRadius(labelPosition)
           .startAngle(angles.inBottomHalf ? angles.endAngle : angles.startAngle) // Reverse direction for bottom labels
           .endAngle(angles.inBottomHalf ? angles.startAngle : angles.endAngle)())
 
