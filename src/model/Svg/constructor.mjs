@@ -45,11 +45,12 @@ class Svg {
     this.data.designerId = groupData[0].designerId
     this.data.category = groupData[0].category
     this.data.label = groupData[0].label
-    this.data.title = `${this.data.category}, Designer ${this.data.designerId}, ${this.data.label} score: ${this.data.score}`
     // Create paths for each chart segment and append them to the slice <g>
     append.paths(slice, groupData, this.data.isTeam, this.data.chartSlices, this.data.labels)
     // Calculate the score based on the paths
     this.data.score = calculate.score(groupData)
+    // Build the title for chart accessibility
+    this.data.title = `${this.data.category}, Designer ${this.data.designerId}, ${this.data.label} score: ${this.data.score}`
     // Calculate the total number of slices to know where to put the score marker
     const totalSlices = calculate.totalSlices(this.data.isTeam, this.data.chartSlices, this.data.labels)
     // Set which ring to display the marker in
