@@ -1,5 +1,5 @@
 import Skill from '../Skill/constructor.mjs'
-import data from '../../lib/csv/map-data.mjs'
+import data from '../../lib/utils/csv/map-data.mjs'
 import validateCapabilityParams from './validator.mjs'
 import sanitiseCapabilityParams from './sanitiser.mjs'
 

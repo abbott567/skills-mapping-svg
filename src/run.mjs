@@ -1,5 +1,5 @@
 import buildDataModel from './lib/build-data-model.mjs'
-import rawData from './lib/csv/map-data.mjs'
+import rawData from './lib/utils/csv/map-data.mjs'
 import buildHTML from './lib/build-html.mjs'
 import exportCharts from './lib/export-charts.mjs'
 import compileSass from './lib/compile-sass.mjs'

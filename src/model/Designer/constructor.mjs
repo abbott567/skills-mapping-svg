@@ -1,4 +1,4 @@
-import groupDesignerStats from '../../lib/csv/group-stats.mjs'
+import groupDesignerStats from '../../lib/utils/csv/group-stats.mjs'
 import Chart from '../Chart/constructor.mjs'
 import validateDesignerParams from './validator.mjs'
 
