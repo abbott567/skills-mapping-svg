@@ -14,7 +14,7 @@ class Svg {
   #dom
 
   constructor (params) {
-    params.id = Svg.count += 1
+    this.id = Svg.count += 1
     const validParams = validateSvgParams(params)
     const sanitisedParams = sanitiseSvgParams(validParams)
     this.#dom = append.fakeDom()
