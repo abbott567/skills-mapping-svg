@@ -1,0 +1,10 @@
+{
+  "logo": {
+    "use": true,
+    "height": 70,
+    "margin": {
+      "left": 10,
+      "bottom": 10
+    }
+  }
+}

@@ -5,7 +5,7 @@ import htmlmin from 'html-minifier'
 
 export function buildHTML (data) {
   console.log('HTML attempting to compile')
-  const env = nunjucks.configure('src/views', {
+  const env = nunjucks.configure(['src/views', 'src/config'], {
     autoescape: true
   })
   env.addFilter('camelCase', camelCase)

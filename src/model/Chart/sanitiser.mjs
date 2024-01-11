@@ -13,6 +13,7 @@ export function sanitiseChartParams (params) {
   } else if (sanitisedParams.key === 'Capabilities') {
     sanitisedParams.domId = `chart-${sanitisedParams.id}-capabilities`
   }
+  sanitisedParams.title = sanitisedParams.key
   return sanitisedParams
 }
 
