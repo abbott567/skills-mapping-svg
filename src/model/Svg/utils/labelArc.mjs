@@ -24,20 +24,20 @@ export function getPathId (i, inBottomHalf) {
 }
 // Generate all relevant angles for a label at a given index
 export function getAngles (i, numberOfLabels) {
-    const labelAngle = getLabelAngle(numberOfLabels)
-    const startAngle = getStartAngle(i, labelAngle)
-    const endAngle = getEndAngle(i, labelAngle)
-    const midAngle = getMidAngle(startAngle, endAngle)
-    const inBottomHalf = isBottomHalf(midAngle)
-    const pathId = getPathId(i, inBottomHalf)
-    return {
-      labelAngle,
-      startAngle,
-      endAngle,
-      midAngle,
-      inBottomHalf,
-      pathId
-    }
+  const labelAngle = getLabelAngle(numberOfLabels)
+  const startAngle = getStartAngle(i, labelAngle)
+  const endAngle = getEndAngle(i, labelAngle)
+  const midAngle = getMidAngle(startAngle, endAngle)
+  const inBottomHalf = isBottomHalf(midAngle)
+  const pathId = getPathId(i, inBottomHalf)
+  return {
+    labelAngle,
+    startAngle,
+    endAngle,
+    midAngle,
+    inBottomHalf,
+    pathId
+  }
 }
 
 export default {

@@ -3,7 +3,7 @@ import jetpack from 'fs-jetpack'
 import colours from '../model/Svg/utils/colours.mjs'
 
 function createBaseConfig () {
-  const config = jetpack.read(path.join('src', 'config', 'chart.json'), 'json')  
+  const config = jetpack.read(path.join('src', 'config', 'chart.json'), 'json')
   return config
 }
 

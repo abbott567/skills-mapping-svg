@@ -9,8 +9,6 @@ const {
   font
 } = config
 
-
-
 export function appendLabels (svg, labels) {
   const numberOfLabels = labels.length
   const labelPosition = calculate.labelPosition(labelOffset)

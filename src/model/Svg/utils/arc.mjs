@@ -33,11 +33,11 @@ function calculateCentroid (level, slice, totalSlices) {
   const endAngle = getEndAngle(slice, totalSlices)
   // Calculate the midpoint of these angles
   const midAngle = (startAngle + endAngle) / 2
-    // Determine the radii for the start, end, and midpoint of the slice
+  // Determine the radii for the start, end, and midpoint of the slice
   const startRadius = level * ringWidth + innerRadiusBuffer
   const endRadius = startRadius + ringWidth
   const midRadius = (startRadius + endRadius) / 2
-    // Calculate and return the coordinates of the centroid
+  // Calculate and return the coordinates of the centroid
   return [
     midRadius * Math.cos(midAngle - Math.PI / 2), // Adjusted by -90 degrees to align with standard coordinate system
     midRadius * Math.sin(midAngle - Math.PI / 2)
