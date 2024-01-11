@@ -2,6 +2,7 @@ import puppeteer from 'puppeteer'
 import jetpack from 'fs-jetpack'
 import path from 'path'
 import sharp from 'sharp'
+import getTodayDate from './utils/get-today-date.mjs'
 
 const window = {
   width: 1400,
@@ -30,6 +31,19 @@ export async function saveScreenshots (entity) {
   for (let i = 0; i < chartContainers.length; i++) {
     const container = chartContainers[i]
     const containerId = await container.evaluate(element => element.getAttribute('id'))
+
+    // Add the date to the page
+    const todayDate = getTodayDate()
+    await page.evaluate((date, id, margin) => {
+      const dateDiv = document.createElement('div')
+      dateDiv.textContent = date
+      dateDiv.style.position = 'absolute'
+      dateDiv.style.right = `${margin.left}px`
+      dateDiv.style.bottom = `${margin.bottom}px`
+
+      document.querySelector(`#${id}`).appendChild(dateDiv)
+    }, todayDate, containerId, config.logo.margin)
+
     // Define the screenshot path for each container
     const screenshotPath = path.join(exportPath, `${containerId}.png`)
     // Take a screenshot of each individual chart container

@@ -2,8 +2,10 @@ import Designer from '../model/Designer/constructor.mjs'
 import Skill from '../model/Skill/constructor.mjs'
 import Capability from '../model/Capability/constructor.mjs'
 import Team from '../model/Team/constructor.mjs'
+import getTodayDate from './utils/get-today-date.mjs'
 
 export function buildDataModel (rawData) {
+  const todayDate = getTodayDate()
   for (const entry of rawData.mappingsData['Hard Skills']) {
     const params = {
       name: entry,
@@ -33,6 +35,7 @@ export function buildDataModel (rawData) {
   }
 
   const data = {
+    todayDate,
     Team,
     Designer,
     Skill,

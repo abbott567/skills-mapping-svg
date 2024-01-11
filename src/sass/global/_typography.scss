@@ -30,6 +30,7 @@ h5, h6 {
 
 p {
   font-size: var(--s0);
+  margin-bottom: var(--s-1);
 }
 
 a {
@@ -41,4 +42,8 @@ a {
     text-decoration: none;
     background-color: var(--accentBackground);
   }
+}
+
+strong {
+  font-weight: 700;
 }
