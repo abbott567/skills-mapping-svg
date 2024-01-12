@@ -7,11 +7,13 @@ export class Designer {
   id
   stats
   inputData
+  devFocus
   charts = {}
   #groupedSkills
 
   constructor (params) {
     const validParams = validateDesignerParams(params)
+    this.devFocus = validParams.devFocus
     this.id = params.id || params.Id || params.ID
     this.#groupedSkills = groupDesignerStats(validParams)
     this.stats = this.#groupedSkills
@@ -27,7 +29,9 @@ export class Designer {
         category,
         combinedLabel: `${skillName} (${category})`,
         associatedId: this.id,
-        designerId: this.id
+        designerId: this.id,
+        designerDevFocus: this.devFocus,
+        isDesignerDevFocus: this.devFocus === skillName
       }))
     )
   }
@@ -41,7 +45,8 @@ export class Designer {
     const chart = new Chart({
       key,
       inputData: filteredInputData,
-      isTeam: false
+      isTeam: false,
+      devFocus: this.devFocus
     })
     return chart
   }

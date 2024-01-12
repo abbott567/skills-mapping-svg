@@ -10,8 +10,12 @@ import createSliceGroups from './slice-groups.mjs'
 import createSlicesContainer from './slices-container.mjs'
 import createSvgElement from './svg-element.mjs'
 import createTitle from './title.mjs'
+import createDevelopmentMarkerGroup from './development-marker-group.mjs'
+import createDevelopmentMarker from './development-marker.mjs'
 
 export default {
+  developmentMarker: createDevelopmentMarker,
+  developmentMarkerGroup: createDevelopmentMarkerGroup,
   fakeDom: createFakeDom,
   gridLines: createGridLines,
   idsForScores: createIdsForScores,

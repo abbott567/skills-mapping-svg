@@ -30,6 +30,11 @@ export function buildDataModel (rawData) {
     capability.save()
   }
   for (const entry of rawData.designerData) {
+    for (const devFocus of rawData.developmentData) {
+      if (entry.ID === devFocus.ID) {
+        entry.devFocus = devFocus['Development Focus']
+      }
+    }
     const designer = new Designer(entry)
     designer.save()
   }

@@ -29,7 +29,9 @@ export class Team {
             category: skillData.category,
             combinedLabel: skillData.combinedLabel,
             associatedId: this.id,
-            designerId: designer.id
+            designerId: designer.id,
+            designerDevFocus: designer.devFocus,
+            isDesignerDevFocus: designer.designerDevFocus === skillData.label
           })
         }
       })

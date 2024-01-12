@@ -5,6 +5,19 @@ export function calculateScorePosition (groupData, level) {
   const representativeSlice = groupData[level]
   return representativeSlice
 }
+// Calculate the position of the marker based on the highest active level
+export function calculateDevelopmentMarkerPosition (groupData, designerId) {
+  // Filter the data for the specific designer
+  const designerData = groupData.filter(item => item.designerId === designerId)
+  // Find the highest level where 'active' is true
+  const activeLevels = designerData.filter(item => item.active).map(item => item.level)
+  const highestActiveLevel = Math.max(...activeLevels, 0) // Default to 0 if no active levels are found
+  // Find the representative slice for the highest active level
+  const representativeSlice = designerData.find(item => item.level === highestActiveLevel)
+  // If no representative slice is found, return null or a default object
+  return representativeSlice || null
+}
+
 // Calculate the score based on the group data
 export function calculateScore (groupData) {
   const arrayLevel = groupData.reduce((maxLevel, d) => {
@@ -32,6 +45,7 @@ export function calculateLabelPosition (labelOffset) {
 }
 
 export default {
+  developmentMarkerPosition: calculateDevelopmentMarkerPosition,
   labelPosition: calculateLabelPosition,
   score: calculateScore,
   scorePosition: calculateScorePosition,

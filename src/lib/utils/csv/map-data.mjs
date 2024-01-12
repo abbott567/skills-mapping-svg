@@ -4,9 +4,11 @@ import parseCSV from './parse.mjs'
 export function organiseRawData () {
   const designerData = parseCSV(dataPaths.designers)
   const mappingsData = parseCSV(dataPaths.mappings, { columns: true })
+  const developmentData = parseCSV(dataPaths.development)
 
   const raw = {
     designerData,
+    developmentData,
     mappingsData,
     'Hard Skills': new Set(),
     'Soft Skills': new Set(),

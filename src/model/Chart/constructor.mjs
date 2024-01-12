@@ -21,6 +21,7 @@ export class Chart {
   labels = new Set()
   svg
   slices
+  devFocus
 
   constructor (params) {
     const validParams = validateChartParams(params)
@@ -33,6 +34,7 @@ export class Chart {
     this.title = sanitisedParams.title
     this.isTeam = sanitisedParams.isTeam
     this.key = camelcase(params.key)
+    this.devFocus = params.devFocus
     this.#buildLabels()
     this.#buildSlices()
     this.svg = new Svg({
@@ -55,6 +57,7 @@ export class Chart {
     const slices = []
     let slice = 0
     this.inputData.forEach(entry => {
+      // console.log(entry)
       for (let i = 0; i < levels; i++) {
         slices.push({
           slice,
@@ -64,7 +67,8 @@ export class Chart {
           category: entry.category,
           combinedLabel: `${entry.label} (${entry.category})`,
           associatedId: entry.associatedId,
-          designerId: entry.designerId
+          designerId: entry.designerId,
+          isDesignerDevFocus: entry.designerDevFocus === entry.label
         })
       }
       slice += 1

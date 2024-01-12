@@ -45,6 +45,7 @@ class Svg {
     this.data.designerId = groupData[0].designerId
     this.data.category = groupData[0].category
     this.data.label = groupData[0].label
+    this.data.isDesignerDevFocus = groupData[0].isDesignerDevFocus
     // Create paths for each chart segment and append them to the slice <g>
     append.paths(slice, groupData, this.data.isTeam, this.data.chartSlices, this.data.labels)
     // Calculate the score based on the paths
@@ -53,12 +54,21 @@ class Svg {
     this.data.title = `${this.data.category}, Designer ${this.data.designerId}, ${this.data.label} score: ${this.data.score}`
     // Calculate the total number of slices to know where to put the score marker
     const totalSlices = calculate.totalSlices(this.data.isTeam, this.data.chartSlices, this.data.labels)
+
     // Set which ring to display the marker in
     const scorePosition = calculate.scorePosition(groupData, 9)
     // Create a <g> to hold the score marker and the score text
     const scoreGroup = append.scoreGroup(slice, scorePosition, totalSlices)
     // Create the circular score marker and the text and append them to the scoreGroup <g>
     append.scoreMarker(scoreGroup, this.data.score)
+
+    // Set which ring to display the marker in
+    const developmentMarkerPosition = calculate.developmentMarkerPosition(groupData, this.data.designerId)
+    // Create a <g> to hold the score marker and the score text
+    const developmentMarkerGroup = append.developmentMarkerGroup(slice, developmentMarkerPosition, totalSlices, this.data.isDesignerDevFocus)
+    // Create the circular score marker and the text and append them to the scoreGroup <g>
+    append.developmentMarker(developmentMarkerGroup)
+
     // Add title
     append.title(slice, this.data.title)
   }
