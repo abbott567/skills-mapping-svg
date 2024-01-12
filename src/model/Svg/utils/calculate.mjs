@@ -13,7 +13,7 @@ export function calculateDevelopmentMarkerPosition (groupData, designerId) {
   const activeLevels = designerData.filter(item => item.active).map(item => item.level)
   const highestActiveLevel = Math.max(...activeLevels, 0) // Default to 0 if no active levels are found
   // Find the representative slice for the highest active level
-  const representativeSlice = designerData.find(item => item.level === highestActiveLevel)
+  const representativeSlice = designerData.find(item => item.level === highestActiveLevel + 1)
   // If no representative slice is found, return null or a default object
   return representativeSlice || null
 }

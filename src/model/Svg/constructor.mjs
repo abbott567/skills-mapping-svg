@@ -51,7 +51,8 @@ class Svg {
     // Calculate the score based on the paths
     this.data.score = calculate.score(groupData)
     // Build the title for chart accessibility
-    this.data.title = `${this.data.category}, Designer ${this.data.designerId}, ${this.data.label} score: ${this.data.score}`
+    this.data.title = `${this.data.category}, Designer ${this.data.designerId}, ${this.data.label} score: ${this.data.score}.`
+    if (this.data.isDesignerDevFocus) this.data.title += ` Designer ${this.data.designerId} is currently focused on improving this skill.`
     // Calculate the total number of slices to know where to put the score marker
     const totalSlices = calculate.totalSlices(this.data.isTeam, this.data.chartSlices, this.data.labels)
 
