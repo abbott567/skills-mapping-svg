@@ -1,9 +1,14 @@
 import * as d3 from 'd3'
+import jetpack from 'fs-jetpack'
 
-export function appendDevelopmentMarker (markerGroup, midAngleDegrees) {
+const config = jetpack.read('src/config/chart.json', 'json')
+
+export function appendDevelopmentMarker (markerGroup, midAngleDegrees, totalSlices) {
   if (markerGroup) {
     // Define the size and type of the symbol (arrow)
-    const arrowSize = 70 // Adjust the size as needed
+    let arrowSize
+    if (totalSlices < 10) arrowSize = 50
+    else arrowSize = (100 * config.levels) / totalSlices
     const arrowSymbol = d3.symbol().type(d3.symbolTriangle).size(arrowSize)
 
     if (markerGroup) {
@@ -12,7 +17,7 @@ export function appendDevelopmentMarker (markerGroup, midAngleDegrees) {
         .attr('d', arrowSymbol)
         // Position and rotate the arrow
         .attr('transform', `translate(0, 0) rotate(${midAngleDegrees})`)
-        .attr('fill', 'var(--text)') // Style as needed
+        .attr('fill', 'var(--subduedText)') // Style as needed
         .attr('class', 'slice__development-marker-path')
     }
   }

@@ -74,7 +74,7 @@ class Svg {
     // Create a <g> to hold the score marker and the score text
     const developmentMarkerGroup = append.developmentMarkerGroup(slice, developmentMarkerPosition, totalSlices, this.data.isDesignerDevFocus)
     // Create the circular score marker and the text and append them to the scoreGroup <g>
-    append.developmentMarker(developmentMarkerGroup, midAngleDegrees)
+    append.developmentMarker(developmentMarkerGroup, midAngleDegrees, totalSlices)
 
     // Add title
     append.title(slice, this.data.title)
