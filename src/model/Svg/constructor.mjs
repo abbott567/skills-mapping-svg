@@ -4,6 +4,7 @@ import calculate from './utils/calculate.mjs'
 import optimiseAndExtractSVG from './utils/optimise-and-extract-svg.mjs'
 import validateSvgParams from './validator.mjs'
 import sanitiseSvgParams from './sanitiser.mjs'
+import arc from './utils/arc.mjs'
 
 class Svg {
   static count = 0
@@ -40,7 +41,7 @@ class Svg {
   }
 
   #processSlices (groupData, sliceElement) {
-    // Create data variables
+    const sliceIndex = sliceElement.__data__[0]
     const slice = d3.select(sliceElement)
     this.data.designerId = groupData[0].designerId
     this.data.category = groupData[0].category
@@ -63,12 +64,17 @@ class Svg {
     // Create the circular score marker and the text and append them to the scoreGroup <g>
     append.scoreMarker(scoreGroup, this.data.score)
 
+    const startAngle = arc.getStartAngle(sliceIndex, totalSlices)
+    const endAngle = arc.getEndAngle(sliceIndex, totalSlices)
+    const midAngle = (startAngle + endAngle) / 2
+    const midAngleDegrees = midAngle * (180 / Math.PI)
+
     // Set which ring to display the marker in
     const developmentMarkerPosition = calculate.developmentMarkerPosition(groupData, this.data.designerId)
     // Create a <g> to hold the score marker and the score text
     const developmentMarkerGroup = append.developmentMarkerGroup(slice, developmentMarkerPosition, totalSlices, this.data.isDesignerDevFocus)
     // Create the circular score marker and the text and append them to the scoreGroup <g>
-    append.developmentMarker(developmentMarkerGroup)
+    append.developmentMarker(developmentMarkerGroup, midAngleDegrees)
 
     // Add title
     append.title(slice, this.data.title)
